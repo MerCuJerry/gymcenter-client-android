@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.my.gymcenter.user.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/ranshaonidekaluli"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Account"
+                android:textColor="#100D0D"
+                android:textSize="30sp"
+                />
+
+            <EditText
+                android:id="@+id/login_et_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入账号"
+                android:inputType="phone"
+                android:textColor="#CAB4B4"
+                android:textSize="24sp"
+                android:ems="7"
+                android:typeface="normal"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Password"
+                android:textColor="#100D0D"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/login_et_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入密码"
+                android:ems="7"
+                android:inputType="textPassword"
+                android:textSize="24sp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/login_bt_register"
+                style="@style/Button"
+                android:layout_marginEnd="10dp"
+                android:text="@string/Register" />
+
+            <Button
+                android:id="@+id/login_bt_login"
+                style="@style/Button"
+                android:background="@drawable/btn_pink"
+                android:text="@string/Login"
+                android:textColor="#FFFFFF"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

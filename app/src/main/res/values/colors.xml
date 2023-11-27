@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--main-->
+    <!--main-->
+
+
+    <color name="white">#ffffffff</color>
+    <color name="blue">#39c5bb</color>
+    <color name="red_normal">#ff3a31</color>
+    <color name="red_pressed">#FF6666</color>
+    <color name="yellow_normal">#ff9c01</color>
+    <color name="yellow_pressed">#ff9c01</color>
+
+</resources>

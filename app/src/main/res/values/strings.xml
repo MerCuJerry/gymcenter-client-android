@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="UserManage">用户管理</string>
+    <string name="LessonManage">课程管理</string>
+    <string name="UserAdd">用户添加</string>
+    <string name="LessonAdd">课程添加</string>
+    <string name="CoachManage">教练管理</string>
+    <string name="Announcement">发布通知</string>
+    <string name="Logout">退出登录</string>
+    <string name="Register">注册</string>
+    <string name="Login">登录</string>
+    <string name="Account">账号</string>
+    <string name="Password">密码</string>
+    <string name="Release">发布</string>
+    <string name="ConfirmModify">确认修改</string>
+    <string name="ConfirmAdd">确认添加</string>
+    <string name="PlaceHolder">占位符</string>
+    <string name="MyStudent">我的学员</string>
+    <string name="MyProfile">我的资料</string>
+    <string name="MyLesson">我的课程</string>
+    <string name="Lesson">健身课程</string>
+    <string name="PrivateCoach">我的教练</string>
+</resources>

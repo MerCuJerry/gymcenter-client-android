@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".utils.GymApp"
+        android:icon="@drawable/a"
+        android:label="GymCenter"
+        android:networkSecurityConfig="@xml/network"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".user.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".user.RegisterActivity"/>
+        <activity android:name=".common.MainInterfaceAdminActivity"/>
+        <activity android:name=".lesson.LessonManageActivity"/>
+        <activity android:name=".lesson.LessonAddActivity"/>
+        <activity android:name=".lesson.LessonModifyActivity"/>
+        <activity android:name=".user.UserAddActivity"/>
+        <activity android:name=".user.UserModifyActivity"/>
+        <activity android:name=".user.UserManageActivity"/>
+        <activity android:name=".common.MainInterfaceActivity"/>
+        <activity android:name=".common.MyProfileActivity"/>
+        <activity android:name=".lesson.LessonsStudentActivity"/>
+        <activity android:name=".announcement.AnnouncementActivity"/>
+        <activity android:name=".coach.MyPrivateCoachActivity"/>
+        <activity android:name=".coach.CoachManageActivity"/>
+    </application>
+
+</manifest>
