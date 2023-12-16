@@ -7,7 +7,7 @@ public class Notice {
         return id;
     }
 
-    public void set_id(int courseId) {
+    public void set_id(int id) {
         this.id = id;
     }
 

@@ -85,11 +85,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onResponse(ResponseData<User> response, int id) {
                         User user = response.get_data();
 
-                        List<Cookie> cookieList = OkHttpUtils.getInstance().getOkHttpClient().cookieJar().loadForRequest(new HttpUrl.Builder().scheme("http").host("192.168.2.225").port(9097).build());
-                        for(Cookie cookie: cookieList)
-                        {
-                            Log.e("mop", "onResponse: "+ cookie.value());
-                        }
                         Map<String,Class<?>> IntroPoint=new HashMap<>();
                         IntroPoint.put("admin", MainInterfaceAdminActivity.class);
                         IntroPoint.put("user", MainInterfaceActivity.class);
@@ -98,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(mContext, "账号或密码错误", Toast.LENGTH_SHORT).show();
                             return;
                         }else{
+                            user.set_password(et_password.getText().toString().trim());
                             boolean result = SharedPreferencesUtils.saveUserInfo(mContext, user);
                             if (result) {
                                 Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
