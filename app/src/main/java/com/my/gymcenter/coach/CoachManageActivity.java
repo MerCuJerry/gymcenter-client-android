@@ -33,6 +33,7 @@ public class CoachManageActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(R.layout.list_user);
         mRecyclerView = findViewById(R.id.listuser);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
@@ -46,8 +47,6 @@ public class CoachManageActivity extends AppCompatActivity{
             intent.putExtra("coachId",mList.get(position).get_id());
             startActivity(intent);
         });
-
-        mContext=this;
     }
 
     @Override

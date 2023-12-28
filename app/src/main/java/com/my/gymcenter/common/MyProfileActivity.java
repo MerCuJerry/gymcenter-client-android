@@ -28,7 +28,6 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
     private EditText name;
     private EditText phonenum;
     private EditText data;
-    private EditText weight2;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,7 +44,6 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
         password =findViewById(R.id.new_my_password);
         name = findViewById(R.id.new_my_name);
         phonenum = findViewById(R.id.new_my_tele);
-        weight2=findViewById(R.id.weight);
     }
     @Override
     public void onClick(View v) {
@@ -59,16 +57,14 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
         password.setText(user.get_password());
         phonenum.setText(user.get_phone_num());
         name.setText(user.get_username());
-        weight2.setText("42");
         data.setText(user.get_self_sign());
     }
     private void update() {
         String password = this.password.getText().toString().trim();
         String phone = phonenum.getText().toString().trim();
         String name = this.name.getText().toString().trim();
-        String weight=weight2.getText().toString().trim();
         String data2=data.getText().toString();
-        if ( TextUtils.isEmpty(password)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(name) ||TextUtils.isEmpty(weight)||TextUtils.isEmpty(data2) ) {
+        if ( TextUtils.isEmpty(password)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(name) ||TextUtils.isEmpty(data2) ) {
             Toast.makeText(mContext, "新的信息不能留空", Toast.LENGTH_SHORT).show();
             return;
         }

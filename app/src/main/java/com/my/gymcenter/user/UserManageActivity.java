@@ -105,39 +105,6 @@ public class UserManageActivity extends AppCompatActivity{
                 .get()
                 .url(url)
                 .build()
-                .execute(new ResponseCallback<String>(){
-                    @Override
-                    public Type getType() {
-                        return new TypeToken<ResponseData<String>>(){}.getType();
-                    }
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Toast.makeText(mContext, "网络链接出错！", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onResponse(ResponseData<String> response, int id) {
-                        if (response.get_result().equals("success")) {
-                            Toast.makeText(mContext, "删除用户成功！", Toast.LENGTH_SHORT).show();
-                        reLoad();
-                        } else {
-                            Toast.makeText(mContext, response.get_result(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private void delete(int user_id) {
-        if (user_id == 1) {
-            Toast.makeText(mContext, "不可以删除admin管理员", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        String url = SharedPreferencesUtils.getServerUrl(mContext) + "/user/delete";
-        OkHttpUtils
-                .post()
-                .url(url)
-                .addParams("id", String.valueOf(user_id))
-                .build()
                 .execute(new ResponseCallback<ArrayList<User>>() {
                     @Override
                     public Type getType() {
@@ -155,6 +122,39 @@ public class UserManageActivity extends AppCompatActivity{
                             adapter.updateData(mList);
                         } catch (Exception e) {
                             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void delete(int user_id) {
+        if (user_id == 1) {
+            Toast.makeText(mContext, "不可以删除admin管理员", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String url = SharedPreferencesUtils.getServerUrl(mContext) + "/user/delete";
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("id", String.valueOf(user_id))
+                .build()
+                .execute(new ResponseCallback<String>(){
+                    @Override
+                    public Type getType() {
+                        return new TypeToken<ResponseData<String>>(){}.getType();
+                    }
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(mContext, "网络链接出错！", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResponse(ResponseData<String> response, int id) {
+                        if (response.get_result().equals("success")) {
+                            Toast.makeText(mContext, "删除用户成功！", Toast.LENGTH_SHORT).show();
+                            reLoad();
+                        } else {
+                            Toast.makeText(mContext, response.get_result(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

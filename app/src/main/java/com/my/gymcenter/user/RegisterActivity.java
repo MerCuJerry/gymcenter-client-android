@@ -79,22 +79,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 .addParams("phone_num", phone_num)
                 .addParams("password", password)
                 .build()
-                .execute(new ResponseCallback<User>(){
+                .execute(new ResponseCallback<String>(){
                     @Override
                     public Type getType() {
-                        return new TypeToken<ResponseData<User>>(){}.getType();
+                        return new TypeToken<ResponseData<String>>(){}.getType();
                     }
                     @Override
-                    public void onResponse(ResponseData<User> response, int id) {
+                    public void onResponse(ResponseData<String> response, int id) {
                         try {
-                            User user = response.get_data();
-                            boolean result = SharedPreferencesUtils.saveUserInfo(mContext, user);
-                            if (result) {
-                                Toast.makeText(mContext, "注册成功，已经自动登录！", Toast.LENGTH_SHORT).show();
+                            if (response.get_result().equals("success")) {
+                                Toast.makeText(mContext, "注册成功，请登录！", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(mContext, "用户名密码保存失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext, "注册失败！", Toast.LENGTH_SHORT).show();
                             }
-                            intent.setClass(getApplicationContext(), MainInterfaceActivity.class);
+                            intent.setClass(getApplicationContext(), LoginActivity.class);
                             startActivity(intent);
                             AppManager.getInstance().killAllActivity();
                         } catch (JsonSyntaxException e) {

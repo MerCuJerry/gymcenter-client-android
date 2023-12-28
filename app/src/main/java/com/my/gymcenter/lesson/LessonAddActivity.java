@@ -56,6 +56,7 @@ public class LessonAddActivity extends AppCompatActivity implements View.OnClick
                     .url(url)
                     .addParams("course_name", lesson_name)
                     .addParams("course_describe", lesson_content)
+                    .addParams("coach_id", String.valueOf(getIntent().getIntExtra("coachId", 0)))
                     .build()
                     .execute(new ResponseCallback<String>() {
                         @Override

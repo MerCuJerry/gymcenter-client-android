@@ -81,7 +81,7 @@ public class AnnouncementActivity extends AppCompatActivity implements View.OnCl
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams("notice_content", contentStr)
+                .addParams("content", contentStr)
                 .build()
                 .execute(new ResponseCallback<String>() {
                     @Override

@@ -53,10 +53,10 @@ public class LessonManageActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(adapter);
         mContext = this;
+        mBtn=findViewById(R.id.LessonAdd);
         if(Objects.equals(introPoint, "coachManage")){
             mBtn.setVisibility(View.VISIBLE);
         }
-        mBtn=findViewById(R.id.LessonAdd);
         mBtn.setOnClickListener(v -> {
             Intent intent=new Intent(mContext, LessonAddActivity.class);
             intent.putExtra("coachId",getIntent().getIntExtra("coachId",0));
@@ -69,13 +69,7 @@ public class LessonManageActivity extends AppCompatActivity {
     {
         super.onResume();
         introPoint = getIntent().getStringExtra("introPoint");
-        int id = 0;
-        if (Objects.equals(introPoint, "coach")){
-            id = SharedPreferencesUtils.getUserInfo(mContext).get_id();
-        }else if(Objects.equals(introPoint, "coachManage")) {
-            id = getIntent().getIntExtra("coachId",0);
-        }
-        reLoad(id);
+        reLoad();
     }
 
     private final OnItemMenuClickListener mItemMenuClickListener = new OnItemMenuClickListener() {
@@ -88,6 +82,7 @@ public class LessonManageActivity extends AppCompatActivity {
             if (direction == SwipeRecyclerView.RIGHT_DIRECTION) {
                 if (menuPosition == 0) {
                     delete(mList.get(position));
+                    reLoad();
                 } else if (menuPosition == 1) {
                     Intent intent=new Intent(mContext, LessonModifyActivity.class);
                     intent.putExtra("courseId",mList.get(position).get_id());
@@ -122,21 +117,21 @@ public class LessonManageActivity extends AppCompatActivity {
         }
     };
 
-    private void reLoad(int id) {
+    private void reLoad() {
         if(Objects.equals(introPoint, "admin")){
             String url = SharedPreferencesUtils.getServerUrl(mContext) + "/course/query";
             OkHttpUtils
                     .get()
                     .url(url)
                     .build()
-                    .execute(new MyStringCallback());
+                    .execute(new MyCallback());
         }else if (Objects.equals(introPoint, "coach") || Objects.equals(introPoint, "coachManage")) {
-            String url = SharedPreferencesUtils.getServerUrl(mContext) + "/course/query/" + id;
+            String url = SharedPreferencesUtils.getServerUrl(mContext) + "/course/query/" + getIntent().getIntExtra("coachId",0);
             OkHttpUtils
                     .get()
                     .url(url)
                     .build()
-                    .execute(new MyStringCallback());
+                    .execute(new MyCallback());
         }
     }
 
@@ -167,7 +162,7 @@ public class LessonManageActivity extends AppCompatActivity {
                 });
     }
 
-    private class MyStringCallback extends ResponseCallback<ArrayList<Course>> {
+    private class MyCallback extends ResponseCallback<ArrayList<Course>> {
         @Override
         public Type getType() {
             return new TypeToken<ResponseData<ArrayList<Course>>>(){}.getType();

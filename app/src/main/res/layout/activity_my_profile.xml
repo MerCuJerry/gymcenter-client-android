@@ -102,31 +102,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="您的体重"
-            android:textColor="#100D0D"
-            android:textSize="30sp" />
-
-        <EditText
-            android:id="@+id/weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:textAlignment="center"
-            android:hint="请输入您的新体重"
-            android:ems="8"
-            android:textSize="24sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
             android:text="您的简介"
             android:textColor="#100D0D"
             android:textSize="30sp" />
